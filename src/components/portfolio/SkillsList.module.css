@@ -1,0 +1,26 @@
+.group {
+  margin-bottom: 1.5rem;
+}
+
+.groupTitle {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
