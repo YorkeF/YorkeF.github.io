@@ -10,6 +10,7 @@ export interface ContactInfo {
   email: string;
   github: string;
   linkedin?: string;
+  phone?: string;
 }
 
 export interface Experience {

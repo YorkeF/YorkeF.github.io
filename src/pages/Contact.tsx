@@ -4,6 +4,7 @@ import styles from './Contact.module.css';
 const CONTACT: ContactInfo = {
   email: 'yorke.ferrell@gmail.com',
   github: 'https://github.com/YorkeF',
+  phone: '1.405.820.7242',
 };
 
 export const Contact = () => (
@@ -14,6 +15,10 @@ export const Contact = () => (
         <li>
           <span className={styles.label}>Email</span>
           <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+        </li>
+        <li>
+          <span className={styles.label}>Phone</span>
+          <span>{CONTACT.phone}</span>
         </li>
         <li>
           <span className={styles.label}>GitHub</span>
