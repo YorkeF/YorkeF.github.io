@@ -1,0 +1,22 @@
+<div class="editor-panel">
+  @if (lines().length > 0) {
+    <div class="editor-scroll">
+      <div class="gutter">
+        @for (line of lines(); track line.number) {
+          <div class="gutter-line">{{ line.number }}</div>
+        }
+      </div>
+      <div class="code-area">
+        @for (line of lines(); track line.number) {
+          <div class="code-line" [innerHTML]="line.html"></div>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <div class="empty-icon">📂</div>
+      <div class="empty-title">No file open</div>
+      <div class="empty-hint">Select a file from the project tree to open it,<br>or use the terminal below.</div>
+    </div>
+  }
+</div>

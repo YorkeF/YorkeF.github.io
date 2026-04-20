@@ -1,0 +1,77 @@
+<div class="ide-shell">
+
+  <!-- Title Bar -->
+  <div class="titlebar">
+    <div class="titlebar-controls">
+      <span class="ctrl close"></span>
+      <span class="ctrl min"></span>
+      <span class="ctrl max"></span>
+    </div>
+    <span class="titlebar-title">
+      portfolio{{ activeFileName() ? ' – ' + activeFileName() : '' }} – IntelliJ IDEA
+    </span>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="tb-group">
+      <button class="tb-btn" title="Run">▶</button>
+      <button class="tb-btn" title="Debug">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="6.5" cy="6.5" r="2" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="tb-btn" title="Stop">■</button>
+    </div>
+    <div class="tb-sep"></div>
+    <div class="tb-group">
+      <button class="tb-btn" title="Search Everywhere">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M9 9L11.5 11.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="tb-btn" title="Settings">⚙</button>
+    </div>
+    <span class="tb-project">portfolio</span>
+  </div>
+
+  <!-- Main area -->
+  <div class="main-area">
+
+    <!-- Sidebar -->
+    <div class="sidebar" [style.width.px]="sidebarWidth()">
+      <div class="sidebar-header">
+        <span>Project</span>
+      </div>
+      <div class="sidebar-scroll">
+        <app-file-tree></app-file-tree>
+      </div>
+    </div>
+
+    <!-- Vertical resize handle -->
+    <div class="vhandle" (mousedown)="onSidebarDragStart($event)"></div>
+
+    <!-- Editor + terminal column -->
+    <div class="editor-col">
+      <app-tab-bar></app-tab-bar>
+
+      <div class="editor-wrap">
+        <app-editor-panel></app-editor-panel>
+      </div>
+
+      <!-- Horizontal resize handle -->
+      <div class="hhandle" (mousedown)="onTerminalDragStart($event)"></div>
+
+      <div class="terminal-wrap" [style.height.px]="terminalHeight()">
+        <app-terminal></app-terminal>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Status Bar -->
+  <app-status-bar></app-status-bar>
+
+</div>

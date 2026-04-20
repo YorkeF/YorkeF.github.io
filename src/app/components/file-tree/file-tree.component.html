@@ -1,0 +1,19 @@
+<div class="file-tree">
+  @for (flat of flatNodes(); track flat.node.path) {
+    <div
+      class="tree-item"
+      [class.is-active]="flat.node.type === 'file' && flat.node.path === activeTabPath()"
+      [style.paddingLeft]="indent(flat.depth)"
+      (click)="onNodeClick(flat.node)"
+    >
+      @if (flat.node.type === 'folder') {
+        <span class="chevron">{{ flat.node.expanded ? '▾' : '▸' }}</span>
+        <span class="node-icon folder">{{ flat.node.expanded ? '📂' : '📁' }}</span>
+      } @else {
+        <span class="chevron"></span>
+        <span class="node-icon file">📄</span>
+      }
+      <span class="node-name">{{ flat.node.name }}</span>
+    </div>
+  }
+</div>

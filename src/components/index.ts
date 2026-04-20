@@ -1,9 +1,0 @@
-export { Header } from './common/Header';
-export { Footer } from './common/Footer';
-export { Navigation } from './common/Navigation';
-export { ProjectCard } from './portfolio/ProjectCard';
-export { SkillsList } from './portfolio/SkillsList';
-export { ExperienceEntry } from './portfolio/ExperienceEntry';
-export { ExperienceList } from './portfolio/ExperienceList';
-export { EducationEntry } from './portfolio/EducationEntry';
-export { EducationList } from './portfolio/EducationList';

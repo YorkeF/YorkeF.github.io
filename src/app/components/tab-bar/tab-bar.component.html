@@ -1,0 +1,14 @@
+<div class="tab-bar">
+  @for (tab of tabs(); track tab.path) {
+    <div
+      class="tab"
+      [class.active]="tab.path === activeTabPath()"
+      (click)="onTabClick(tab.path)"
+    >
+      <span class="tab-icon">📄</span>
+      <span class="tab-name">{{ tab.name }}</span>
+      <button class="tab-close" (click)="onTabClose($event, tab.path)" title="Close">×</button>
+    </div>
+  }
+  <div class="tab-spacer"></div>
+</div>

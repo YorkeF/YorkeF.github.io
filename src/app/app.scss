@@ -1,0 +1,193 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ide-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-editor);
+}
+
+/* ── Title Bar ── */
+.titlebar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: var(--bg-titlebar);
+  border-bottom: 1px solid var(--border);
+  padding: 0 14px;
+  flex-shrink: 0;
+  user-select: none;
+  gap: 14px;
+}
+
+.titlebar-controls {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.ctrl {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: filter 0.15s;
+
+  &.close { background: #ff5f57; }
+  &.min   { background: #febc2e; }
+  &.max   { background: #28c840; }
+  &:hover { filter: brightness(0.85); }
+}
+
+.titlebar-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  padding: 0 8px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.tb-group {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.tb-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 6px;
+}
+
+.tb-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, color 0.1s;
+
+  &:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+}
+
+.tb-project {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg-hover);
+}
+
+/* ── Main Area ── */
+.main-area {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  flex-shrink: 0;
+  min-width: 160px;
+  max-width: 480px;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.sidebar-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Resize Handles ── */
+.vhandle {
+  width: 4px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: transparent;
+  transition: background 0.15s;
+  z-index: 20;
+
+  &:hover, &:active { background: var(--accent); }
+}
+
+.hhandle {
+  height: 4px;
+  flex-shrink: 0;
+  cursor: row-resize;
+  background: transparent;
+  transition: background 0.15s;
+  z-index: 20;
+
+  &:hover, &:active { background: var(--accent); }
+}
+
+/* ── Editor Column ── */
+.editor-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.editor-wrap {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.terminal-wrap {
+  flex-shrink: 0;
+  overflow: hidden;
+  min-height: 80px;
+}

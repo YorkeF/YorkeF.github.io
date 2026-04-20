@@ -1,0 +1,51 @@
+:host { display: block; }
+
+.file-tree {
+  padding: 4px 0;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  user-select: none;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  padding-right: 8px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.08s;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:hover {
+    background: var(--bg-hover);
+  }
+
+  &.is-active {
+    background: var(--bg-selected);
+    color: #d9e4ff;
+  }
+}
+
+.chevron {
+  width: 14px;
+  font-size: 10px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.node-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.node-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}

@@ -1,0 +1,24 @@
+<div class="status-bar">
+  <div class="status-left">
+    <span class="status-item branch">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+        <circle cx="3" cy="2.5" r="1.5"/>
+        <circle cx="3" cy="9.5" r="1.5"/>
+        <circle cx="9" cy="2.5" r="1.5"/>
+        <path d="M3 4v3.5M3 7.5q0-2 3-2h1.5" stroke="currentColor" stroke-width="1" fill="none"/>
+      </svg>
+      main
+    </span>
+  </div>
+  <div class="status-right">
+    @if (activeFileName()) {
+      <span class="status-item">Markdown</span>
+      <span class="status-sep"></span>
+    }
+    <span class="status-item">UTF-8</span>
+    <span class="status-sep"></span>
+    <span class="status-item">LF</span>
+    <span class="status-sep"></span>
+    <span class="status-item">Ln 1, Col 1</span>
+  </div>
+</div>

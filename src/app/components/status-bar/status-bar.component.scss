@@ -1,0 +1,44 @@
+:host { display: block; }
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  background: var(--status-bg);
+  color: var(--status-text);
+  font-size: 11px;
+  padding: 0 10px;
+  flex-shrink: 0;
+  font-family: var(--font-ui);
+  user-select: none;
+}
+
+.status-left, .status-right {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 5px;
+  height: 18px;
+  border-radius: 3px;
+  cursor: default;
+  white-space: nowrap;
+  transition: background 0.1s;
+
+  &:hover { background: rgba(255, 255, 255, 0.15); }
+
+  svg { opacity: 0.85; }
+}
+
+.status-sep {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 0 2px;
+}

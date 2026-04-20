@@ -1,0 +1,68 @@
+:root {
+  --bg-editor:       #1e1f22;
+  --bg-panel:        #2b2d30;
+  --bg-hover:        #313438;
+  --bg-selected:     #2e436e;
+  --bg-titlebar:     #1e1f22;
+  --border:          #393b40;
+  --text-primary:    #bcbec4;
+  --text-muted:      #7a7e85;
+  --text-faint:      #555963;
+  --accent:          #4e9de0;
+  --md-heading:      #e8e8e8;
+  --md-bold:         #ffffff;
+  --md-hash:         #6aab73;
+  --md-key:          #cf8e6d;
+  --md-value:        #6aab73;
+  --md-code:         #2aacb8;
+  --md-comment:      #7a7e85;
+  --md-italic:       #9876aa;
+  --md-bullet:       #4e9de0;
+  --gutter-bg:       #2b2d30;
+  --gutter-text:     #555963;
+  --terminal-bg:     #1e1f22;
+  --terminal-prompt: #6aab73;
+  --terminal-error:  #e06c75;
+  --status-bg:       #3574f0;
+  --status-text:     #ffffff;
+  --tab-active-bg:   #1e1f22;
+  --tab-inactive-bg: #2b2d30;
+  --tab-indicator:   #4e9de0;
+  --font-ui:   system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --line-h:    21px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-editor);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar         { width: 8px; height: 8px; }
+::-webkit-scrollbar-track   { background: transparent; }
+::-webkit-scrollbar-thumb   { background: #4c5052; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #5e6366; }
+*  { scrollbar-width: thin; scrollbar-color: #4c5052 transparent; }
+
+/* Markdown syntax highlighting — applied via [innerHTML] in editor, must be global */
+.md-hash    { color: var(--md-hash); }
+.md-heading { color: var(--md-heading); font-weight: 600; }
+.md-bold    { color: var(--md-bold); font-weight: 700; }
+.md-italic  { color: var(--md-italic); font-style: italic; }
+.md-code    { color: var(--md-code); }
+.md-key     { color: var(--md-key); }
+.md-value   { color: var(--md-value); }
+.md-comment { color: var(--md-comment); }
+.md-bullet  { color: var(--md-bullet); }

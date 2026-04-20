@@ -1,89 +1,40 @@
+# yferrell.dev
 
-Personal portfolio site, hosted on GitHub Pages at [yorkeferrell.com](https://yorkeferrell.com).
-
----
+A portfolio site that looks and behaves like a JetBrains IDE. Built with Angular 21, deployed to GitHub Pages at [yferrell.dev](https://yferrell.dev).
 
 ## Concept
 
-A minimal, static portfolio hub that serves as the central landing page for my work. It summarizes my experience, education, and skills, and links out to independent project sites hosted on subdomains of `yorkeferrell.com`. Each project lives in its own repository and is deployed separately.
+Instead of a traditional portfolio, this site renders as a fully interactive JetBrains New UI Dark IDE. Portfolio content is organised into folders in a file tree — clicking a file opens it in a tabbed editor with syntax-highlighted markdown. A fake bash terminal at the bottom lets you navigate the file system with `ls`, `cd`, `cat`, and other commands.
 
----
+## Updating Content
 
-## Stack
+All portfolio content lives in `src/app/data/`. Each file exports a `Record<filename, markdownString>`:
 
-- **Framework:** React 18 with TypeScript
-- **Build Tool:** Vite
-- **Styling:** CSS Modules with CSS custom properties
-- **Routing:** React Router v6
-- **Hosting:** GitHub Pages with custom domain
+| File | Folder in the IDE |
+|---|---|
+| `about.data.ts` | `about.md` at the root level |
+| `education.data.ts` | `education/` |
+| `experience.data.ts` | `experience/` |
+| `projects.data.ts` | `projects/` |
 
----
+Add a new entry by adding a key/value pair to the relevant file. The file tree and terminal update automatically — no other changes needed.
 
-## Project Structure
-
-```
-src/
-├── main.tsx                  # React entry point
-├── App.tsx                   # Root component with routes
-├── vite-env.d.ts             # CSS modules + Vite type declarations
-├── types/
-│   └── index.ts              # Shared TypeScript interfaces
-├── styles/
-│   └── globals.css           # CSS variables and base reset
-├── components/
-│   ├── index.ts              # Barrel exports
-│   ├── common/
-│   │   ├── Header.tsx        # Sticky top nav bar
-│   │   ├── Footer.tsx        # Page footer
-│   │   └── Navigation.tsx    # Nav links with active state
-│   └── portfolio/
-│       ├── ExperienceList.tsx   # Renders a list of ExperienceEntry
-│       ├── ExperienceEntry.tsx  # Single work experience item
-│       ├── EducationList.tsx    # Renders a list of EducationEntry
-│       ├── EducationEntry.tsx   # Single education item
-│       ├── SkillsList.tsx       # Tagged skill group
-│       └── ProjectCard.tsx      # Card linking to a project subdomain
-└── pages/
-    ├── Home.tsx              # Hero + work experience
-    ├── About.tsx             # Bio, education, and skills
-    └── Contact.tsx           # Email and GitHub links
-```
-
----
-
-## Pages
-
-| Route | Page | Content |
-|---|---|---|
-| `/` | Home | Hero intro, full work experience |
-| `/about` | About | Bio, education history, skills |
-| `/contact` | Contact | Email and GitHub |
-
----
-
-## Local Development
+## Development
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
-npm run build     # production build → /dist
-npm run preview   # preview production build locally
+npm start        # dev server at localhost:4200
+npm run build    # production build → dist/portfolio/browser/
+npm test         # unit tests (Vitest)
 ```
-
----
 
 ## Deployment
 
-Pushing to `main` triggers GitHub Pages to deploy from the repository root. The `dist/` directory is excluded from version control — build output is not committed.
+Pushes to `main` trigger a GitHub Actions workflow that builds the project and deploys `dist/portfolio/browser` to GitHub Pages. The custom domain is configured via the `CNAME` file.
 
-The site is served at [yorkeferrell.com](https://yorkeferrell.com) via DNS A records pointing to GitHub's servers.
+## Tech Stack
 
----
-
-## Projects
-
-Independent project sites deployed to subdomains of `yorkeferrell.com`. Each is a separate GitHub repository with its own Vite + React + TypeScript setup.
-
-| Project | Subdomain | Repository |
-|---|---|---|
-| *(coming soon)* | — | — |
+- [Angular 21](https://angular.dev) — standalone components, signals, RxJS
+- SCSS with CSS custom properties for the JetBrains New UI Dark theme
+- [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) via Google Fonts
+- GitHub Pages + GitHub Actions

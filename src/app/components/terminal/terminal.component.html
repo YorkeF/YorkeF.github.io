@@ -1,0 +1,27 @@
+<div class="terminal" (click)="focusInput()">
+  <div class="term-header">
+    <span class="term-label">Terminal</span>
+    <div class="term-tabs">
+      <span class="term-tab">bash</span>
+    </div>
+  </div>
+
+  <div class="term-body" #scrollArea>
+    @for (entry of entries(); track $index) {
+      <div class="t-line t-{{ entry.type }}">{{ entry.text }}</div>
+    }
+    <div class="t-prompt-row">
+      <span class="t-prompt">{{ prompt }}</span>
+      <input
+        #cmdInput
+        class="t-input"
+        type="text"
+        [value]="currentInput()"
+        (input)="onInput($event)"
+        (keydown)="onKeydown($event)"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+  </div>
+</div>
