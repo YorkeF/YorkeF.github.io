@@ -23,8 +23,13 @@ export class App {
     { initialValue: null as string | null }
   );
 
-  sidebarWidth  = signal(240);
+  sidebarWidth   = signal(240);
   terminalHeight = signal(220);
+  showProject    = signal(true);
+  showTerminal   = signal(true);
+
+  toggleProject(): void  { this.showProject.update(v => !v); }
+  toggleTerminal(): void { this.showTerminal.update(v => !v); }
 
   private resizingSidebar  = false;
   private resizingTerminal = false;

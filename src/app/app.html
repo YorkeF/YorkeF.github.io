@@ -40,33 +40,75 @@
   <!-- Main area -->
   <div class="main-area">
 
-    <!-- Sidebar -->
-    <div class="sidebar" [style.width.px]="sidebarWidth()">
-      <div class="sidebar-header">
-        <span>Project</span>
+    <!-- Activity Bar -->
+    <div class="activity-bar">
+      <div class="ab-top">
+        <button class="ab-btn" [class.active]="showProject()" title="Project" (click)="toggleProject()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M1.5 4.5A1 1 0 0 1 2.5 3.5H5.88a1 1 0 0 1 .72.3l.9.9a1 1 0 0 0 .71.3H13.5a1 1 0 0 1 1 1V12a1 1 0 0 1-1 1H2.5a1 1 0 0 1-1-1V4.5z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          </svg>
+        </button>
+        <button class="ab-btn" title="Bookmarks">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 2h8a1 1 0 0 1 1 1v10l-5-2.5L3 13V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          </svg>
+        </button>
+        <button class="ab-btn" title="Structure">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="1.5" y="2" width="5" height="3" rx="0.5" stroke="currentColor" stroke-width="1.1"/>
+            <rect x="9.5" y="6.5" width="5" height="3" rx="0.5" stroke="currentColor" stroke-width="1.1"/>
+            <rect x="1.5" y="11" width="5" height="3" rx="0.5" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M6.5 3.5H8.5V8H6.5M6.5 12.5H8.5V8" stroke="currentColor" stroke-width="1.1" fill="none"/>
+          </svg>
+        </button>
       </div>
-      <div class="sidebar-scroll">
-        <app-file-tree></app-file-tree>
+      <div class="ab-bottom">
+        <button class="ab-btn" [class.active]="showTerminal()" title="Terminal" (click)="toggleTerminal()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M4.5 5.5L7.5 8 4.5 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- Vertical resize handle -->
-    <div class="vhandle" (mousedown)="onSidebarDragStart($event)"></div>
+    <!-- Work area -->
+    <div class="work-area">
 
-    <!-- Editor + terminal column -->
-    <div class="editor-col">
-      <app-tab-bar></app-tab-bar>
+      <!-- Top row: project panel + editor -->
+      <div class="top-row">
 
-      <div class="editor-wrap">
-        <app-editor-panel></app-editor-panel>
+        @if (showProject()) {
+          <div class="project-panel" [style.width.px]="sidebarWidth()">
+            <div class="panel-header">
+              <span>Project</span>
+            </div>
+            <div class="panel-scroll">
+              <app-file-tree></app-file-tree>
+            </div>
+          </div>
+          <div class="vhandle" (mousedown)="onSidebarDragStart($event)"></div>
+        }
+
+        <!-- Editor column -->
+        <div class="editor-col">
+          <app-tab-bar></app-tab-bar>
+          <div class="editor-wrap">
+            <app-editor-panel></app-editor-panel>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Horizontal resize handle -->
-      <div class="hhandle" (mousedown)="onTerminalDragStart($event)"></div>
-
-      <div class="terminal-wrap" [style.height.px]="terminalHeight()">
-        <app-terminal></app-terminal>
+      <!-- Terminal — CSS-hidden to preserve state between toggles -->
+      <div class="terminal-row" [class.hidden]="!showTerminal()">
+        <div class="hhandle" (mousedown)="onTerminalDragStart($event)"></div>
+        <div class="terminal-wrap" [style.height.px]="terminalHeight()">
+          <app-terminal></app-terminal>
+        </div>
       </div>
+
     </div>
 
   </div>

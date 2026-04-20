@@ -115,21 +115,84 @@
   min-height: 0;
 }
 
-/* ── Sidebar ── */
-.sidebar {
+/* ── Activity Bar ── */
+.activity-bar {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  width: 36px;
+  flex-shrink: 0;
   background: var(--bg-panel);
+  border-right: 1px solid var(--border);
+}
+
+.ab-top, .ab-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+  gap: 2px;
+}
+
+.ab-btn {
+  background: none;
+  border: none;
+  outline: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s, background 0.12s;
+  box-shadow: inset 2px 0 0 transparent;
+
+  &:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+  }
+
+  &.active {
+    color: var(--text-primary);
+    box-shadow: inset 2px 0 0 var(--accent);
+    background: var(--bg-hover);
+  }
+}
+
+/* ── Work Area ── */
+.work-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+  background: var(--bg-panel);
+}
+
+/* ── Top Row (project panel + editor) ── */
+.top-row {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Project Panel ── */
+.project-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-editor);
   flex-shrink: 0;
   min-width: 160px;
   max-width: 480px;
   overflow: hidden;
+  border-radius: 0 0 8px 8px;
 }
 
-.sidebar-header {
+.panel-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 30px;
   padding: 0 10px;
   font-size: 11px;
@@ -137,12 +200,13 @@
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.07em;
+  background: var(--bg-editor);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
   user-select: none;
 }
 
-.sidebar-scroll {
+.panel-scroll {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -178,6 +242,7 @@
   flex: 1;
   overflow: hidden;
   min-width: 0;
+  border-radius: 0 0 8px 8px;
 }
 
 .editor-wrap {
@@ -186,8 +251,18 @@
   min-height: 0;
 }
 
+/* ── Terminal Row (full width) ── */
+.terminal-row {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  &.hidden { display: none; }
+}
+
 .terminal-wrap {
   flex-shrink: 0;
   overflow: hidden;
   min-height: 80px;
+  border-radius: 8px 8px 0 0;
 }

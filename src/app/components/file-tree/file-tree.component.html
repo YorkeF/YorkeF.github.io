@@ -7,11 +7,33 @@
       (click)="onNodeClick(flat.node)"
     >
       @if (flat.node.type === 'folder') {
-        <span class="chevron">{{ flat.node.expanded ? '▾' : '▸' }}</span>
-        <span class="node-icon folder">{{ flat.node.expanded ? '📂' : '📁' }}</span>
+        <span class="chevron" [class.open]="flat.node.expanded">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M3 2L7 5L3 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="node-icon folder">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M1 3.5A1 1 0 0 1 2 2.5H5.5a1 1 0 0 1 .72.3l.78.78a1 1 0 0 0 .71.3H13a1 1 0 0 1 1 1V11.5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3.5z" stroke="currentColor" stroke-width="1.1" fill="none"/>
+          </svg>
+        </span>
       } @else {
         <span class="chevron"></span>
-        <span class="node-icon file">📄</span>
+        <span class="node-icon file">
+          @if (flat.node.name.endsWith('.md')) {
+            <span class="md-file-icon">
+              <span class="md-m">M</span>
+              <svg class="md-arrow" width="8" height="10" viewBox="0 0 8 10" fill="none">
+                <path d="M4 1V9M1.5 6.5L4 9L6.5 6.5" stroke="#4e9de0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          } @else {
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <rect x="1.5" y="1" width="8" height="11" rx="1" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M4 4.5h5M4 6.5h5M4 8.5h3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          }
+        </span>
       }
       <span class="node-name">{{ flat.node.name }}</span>
     </div>

@@ -5,6 +5,8 @@
   font-family: var(--font-ui);
   font-size: 13px;
   user-select: none;
+  background: var(--bg-editor);
+  min-height: 100%;
 }
 
 .tree-item {
@@ -13,6 +15,8 @@
   gap: 3px;
   height: 24px;
   padding-right: 8px;
+  margin: 0 5px;
+  border-radius: 6px;
   cursor: pointer;
   color: var(--text-primary);
   transition: background 0.08s;
@@ -31,16 +35,41 @@
 
 .chevron {
   width: 14px;
-  font-size: 10px;
-  color: var(--text-muted);
+  height: 14px;
   flex-shrink: 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform 0.15s ease;
+
+  &.open {
+    transform: rotate(90deg);
+  }
 }
 
 .node-icon {
-  font-size: 13px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
+
+  &.folder { color: #808894; }
+  &.file   { color: var(--text-muted); }
+}
+
+.md-file-icon {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1;
+
+  .md-m    { color: #4e9de0; }
+  .md-arrow { display: flex; align-items: center; }
 }
 
 .node-name {
