@@ -13,6 +13,13 @@ import { IdeService } from '../../services/ide.service';
 export class StatusBarComponent {
   private ide = inject(IdeService);
 
+  readonly breadcrumbs = toSignal(
+    this.ide.activeTabPath$.pipe(
+      map(p => p ? p.replace('~/', '').split('/').filter(Boolean) : [])
+    ),
+    { initialValue: [] as string[] }
+  );
+
   readonly activeFileName = toSignal(
     this.ide.activeTabPath$.pipe(map(p => p?.split('/').pop() ?? null)),
     { initialValue: null as string | null }

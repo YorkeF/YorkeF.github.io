@@ -1,5 +1,14 @@
 <div class="editor-panel">
-  @if (lines().length > 0) {
+
+  @if (isImage()) {
+    <div class="image-view">
+      <img [src]="imageSrc()!" [alt]="''" />
+    </div>
+  } @else if (loading()) {
+    <div class="empty-state">
+      <div class="empty-title">Loading…</div>
+    </div>
+  } @else if (lines().length > 0) {
     <div class="editor-scroll">
       <div class="gutter">
         @for (line of lines(); track line.number) {
@@ -19,4 +28,5 @@
       <div class="empty-hint">Select a file from the project tree to open it,<br>or use the terminal below.</div>
     </div>
   }
+
 </div>

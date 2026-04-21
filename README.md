@@ -6,18 +6,61 @@ A portfolio site that looks and behaves like a JetBrains IDE. Built with Angular
 
 Instead of a traditional portfolio, this site renders as a fully interactive JetBrains New UI Dark IDE. Portfolio content is organised into folders in a file tree — clicking a file opens it in a tabbed editor with syntax-highlighted markdown. A fake bash terminal at the bottom lets you navigate the file system with `ls`, `cd`, `cat`, and other commands.
 
-## Updating Content
+## Layout
 
-All portfolio content lives in `src/app/data/`. Each file exports a `Record<filename, markdownString>`:
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│  Toolbar  [logo · hamburger · project · branch]   [run·debug·search] [×]│
+├────┬────────────────────────────────────────────────────────────────────┤
+│    │  TabBarComponent                                                    │
+│    ├──────────────────────────────────────┬──────────────────────────── │
+│ A  │                                      │                             │
+│ c  │  FileTreeComponent                   │  EditorPanelComponent       │
+│ t  │  (project panel)                     │  (line numbers + markdown)  │
+│ i  │                                      │                             │
+│ v  ├──────────────────────────────────────┴─────────────────────────────│
+│ i  │  TerminalComponent  (full width, fake bash)                        │
+│ t  │                                                                    │
+│ y  │                                                                    │
+├────┴────────────────────────────────────────────────────────────────────┤
+│  StatusBarComponent  [breadcrumb path]              [UTF-8 · LF · Ln 1] │
+└─────────────────────────────────────────────────────────────────────────┘
+```
 
-| File | Folder in the IDE |
-|---|---|
-| `about.data.ts` | `about.md` at the root level |
-| `education.data.ts` | `education/` |
-| `experience.data.ts` | `experience/` |
-| `projects.data.ts` | `projects/` |
+The project panel and terminal can each be toggled via the activity bar icons on the left. The divider between the project panel and editor, and the divider above the terminal, are both draggable to resize.
 
-Add a new entry by adding a key/value pair to the relevant file. The file tree and terminal update automatically — no other changes needed.
+## Updating Portfolio Content
+
+All content lives in `public/content/` as real files. The folder structure you create there is exactly what appears in the IDE's file tree.
+
+```
+public/content/
+├── about.md
+├── education/
+│   ├── bachelors_computer_science.md
+│   └── aws_certified_developer.md
+├── experience/
+│   └── senior_frontend_engineer.md
+└── projects/
+    └── portfolio_ide.md
+```
+
+**Supported file types:**
+- `.md` / `.txt` — rendered with syntax highlighting in the editor
+- `.png`, `.jpg`, `.gif`, `.webp`, `.svg` and other images — displayed as an image viewer
+- Any other file type — displayed as plain text
+
+### Adding a file
+
+Drop a file anywhere inside `public/content/`. Then run `npm start` (or `npm run build`) — the manifest is regenerated automatically via a pre-script, and the new file appears in the file tree.
+
+### Adding a folder
+
+Create a subfolder inside `public/content/`. It will appear as a collapsible folder in the file tree.
+
+### Removing a file or folder
+
+Delete it from `public/content/` and restart the dev server.
 
 ## Development
 

@@ -31,6 +31,22 @@ export class App {
   toggleProject(): void  { this.showProject.update(v => !v); }
   toggleTerminal(): void { this.showTerminal.update(v => !v); }
 
+  closeWindow(): void {
+    window.close();
+  }
+
+  maximizeWindow(): void {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  minimizeWindow(): void {
+    window.open('about:blank', '_blank');
+  }
+
   private resizingSidebar  = false;
   private resizingTerminal = false;
   private startX = 0;

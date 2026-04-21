@@ -1,9 +1,8 @@
-export const aboutContent: Record<string, string> = {
-  'about.md': `# About Me
+# About Me
 
-**Name:** Yorke Forde
+**Name:** Yorke Ferrell
 **Role:** Full-Stack Developer
-**Location:** London, United Kingdom
+**Location:** Oklahoma City, United States
 
 ---
 
@@ -25,10 +24,8 @@ because boring portfolios are for boring developers.
 
 ## Contact
 
-- **Email:** hello@yorke.dev
+- **Email:** yorke.ferrell@gmail.com
 - **GitHub:** github.com/YorkeF
 - **LinkedIn:** linkedin.com/in/yorkeforde
 
 <!-- Welcome! Try the terminal at the bottom — type 'help' to get started. -->
-`
-};

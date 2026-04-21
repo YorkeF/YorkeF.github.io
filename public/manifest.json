@@ -1,0 +1,63 @@
+[
+  {
+    "name": "education",
+    "path": "education",
+    "type": "folder",
+    "children": [
+      {
+        "name": "aws_certified_developer.md",
+        "path": "education/aws_certified_developer.md",
+        "type": "file"
+      },
+      {
+        "name": "bachelors_computer_science.md",
+        "path": "education/bachelors_computer_science.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "experience",
+    "path": "experience",
+    "type": "folder",
+    "children": [
+      {
+        "name": "junior_developer.md",
+        "path": "experience/junior_developer.md",
+        "type": "file"
+      },
+      {
+        "name": "senior_frontend_engineer.md",
+        "path": "experience/senior_frontend_engineer.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "projects",
+    "path": "projects",
+    "type": "folder",
+    "children": [
+      {
+        "name": "ecommerce_platform.md",
+        "path": "projects/ecommerce_platform.md",
+        "type": "file"
+      },
+      {
+        "name": "iot_dashboard.md",
+        "path": "projects/iot_dashboard.md",
+        "type": "file"
+      },
+      {
+        "name": "portfolio_ide.md",
+        "path": "projects/portfolio_ide.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "about.md",
+    "path": "about.md",
+    "type": "file"
+  }
+]

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { IdeService } from '../../services/ide.service';
+import { IdeService, IMAGE_EXTS } from '../../services/ide.service';
 import { VirtualNode } from '../../models/file-system.model';
 
 export interface FlatNode {
@@ -47,5 +47,9 @@ export class FileTreeComponent {
 
   indent(depth: number): string {
     return `${depth * 14}px`;
+  }
+
+  isImage(name: string): boolean {
+    return IMAGE_EXTS.test(name);
   }
 }

@@ -3,7 +3,7 @@ import {
   AfterViewChecked, OnInit
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { IdeService } from '../../services/ide.service';
+import { IdeService, IMAGE_EXTS } from '../../services/ide.service';
 import { TerminalEntry } from '../../models/file-system.model';
 
 @Component({
@@ -161,22 +161,30 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
       this.addEntry('error', 'cat: missing operand');
       return;
     }
-    const cwd = this.ide.currentDirectory$.value;
+    const cwd    = this.ide.currentDirectory$.value;
     const target = this.ide.resolvePath(cwd, filename);
-    const node = this.ide.getNode(target);
+    const node   = this.ide.getNode(target);
 
     if (!node) {
       this.addEntry('error', `cat: ${filename}: No such file or directory`);
     } else if (node.type === 'folder') {
       this.addEntry('error', `cat: ${filename}: Is a directory`);
+    } else if (IMAGE_EXTS.test(node.name)) {
+      this.ide.openFile(target);
+      this.addEntry('output', `[image: ${node.name} — opened in editor]`);
     } else {
       this.ide.openFile(target);
-      const lines = (node.content ?? '').split('\n');
-      const preview = lines.slice(0, 10);
-      for (const l of preview) this.addEntry('output', l);
-      if (lines.length > 10) {
-        this.addEntry('output', '...');
-        this.addEntry('output', `(${lines.length} lines — opened in editor)`);
+      const content = this.ide.getContent(target);
+      if (content !== null) {
+        const lines   = content.split('\n');
+        const preview = lines.slice(0, 10);
+        for (const l of preview) this.addEntry('output', l);
+        if (lines.length > 10) {
+          this.addEntry('output', '...');
+          this.addEntry('output', `(${lines.length} lines — opened in editor)`);
+        }
+      } else {
+        this.addEntry('output', `Opening ${node.name} in editor…`);
       }
     }
   }

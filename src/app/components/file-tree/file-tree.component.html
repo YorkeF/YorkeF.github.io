@@ -27,6 +27,12 @@
                 <path d="M4 1V9M1.5 6.5L4 9L6.5 6.5" stroke="#4e9de0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
+          } @else if (isImage(flat.node.name)) {
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.1"/>
+              <circle cx="4.5" cy="4.5" r="1" fill="currentColor"/>
+              <path d="M1.5 9.5L4 7L6 8.5L8.5 5.5L11.5 9.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           } @else {
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <rect x="1.5" y="1" width="8" height="11" rx="1" stroke="currentColor" stroke-width="1.1"/>

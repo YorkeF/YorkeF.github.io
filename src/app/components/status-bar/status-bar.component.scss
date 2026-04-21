@@ -8,10 +8,11 @@
   background: var(--status-bg);
   color: var(--status-text);
   font-size: 11px;
-  padding: 0 10px;
+  padding: 0 6px;
   flex-shrink: 0;
   font-family: var(--font-ui);
   user-select: none;
+  border-top: 1px solid var(--border);
 }
 
 .status-left, .status-right {
@@ -31,14 +32,38 @@
   white-space: nowrap;
   transition: background 0.1s;
 
-  &:hover { background: rgba(255, 255, 255, 0.15); }
+  &:hover { background: rgba(255, 255, 255, 0.08); }
+}
 
-  svg { opacity: 0.85; }
+.breadcrumb {
+  gap: 2px;
+  padding: 0 4px;
+  cursor: default;
+
+  .repo-icon { opacity: 0.7; flex-shrink: 0; }
+}
+
+.crumb-seg {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-muted);
+
+  &.crumb-file { color: var(--text-primary); }
+
+  svg { opacity: 0.7; flex-shrink: 0; }
+}
+
+.crumb-arrow {
+  color: var(--text-faint);
+  font-size: 13px;
+  line-height: 1;
+  margin: 0 1px;
 }
 
 .status-sep {
   width: 1px;
   height: 12px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.15);
   margin: 0 2px;
 }
