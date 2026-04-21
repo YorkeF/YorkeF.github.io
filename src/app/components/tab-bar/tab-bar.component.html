@@ -5,7 +5,32 @@
       [class.active]="tab.path === activeTabPath()"
       (click)="onTabClick(tab.path)"
     >
-      <span class="tab-icon">📄</span>
+      <span class="tab-icon">
+        @if (isMd(tab.name)) {
+          <span class="icon-md">
+            <span class="md-m">M</span>
+            <svg width="7" height="9" viewBox="0 0 8 10" fill="none">
+              <path d="M4 1V9M1.5 6.5L4 9L6.5 6.5" stroke="#4e9de0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        } @else if (isImage(tab.name)) {
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="4.5" cy="4.5" r="1" fill="currentColor"/>
+            <path d="M1.5 9.5L4 7L6 8.5L8.5 5.5L11.5 9.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        } @else if (isJson(tab.name)) {
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M3 2C2 2 1.5 2.5 1.5 3.5v2c0 .8-.5 1-.5 1s.5.2.5 1v2c0 1 .5 1.5 1.5 1.5" stroke="#cf8e6d" stroke-width="1.1" stroke-linecap="round"/>
+            <path d="M10 2c1 0 1.5.5 1.5 1.5v2c0 .8.5 1 .5 1s-.5.2-.5 1v2c0 1-.5 1.5-1.5 1.5" stroke="#cf8e6d" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        } @else {
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <rect x="1.5" y="1" width="8" height="11" rx="1" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M4 4.5h5M4 6.5h5M4 8.5h3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        }
+      </span>
       <span class="tab-name">{{ tab.name }}</span>
       <button class="tab-close" (click)="onTabClose($event, tab.path)" title="Close">×</button>
     </div>

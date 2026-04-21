@@ -188,6 +188,61 @@
   }
 }
 
+/* ── Right Bar ── */
+.right-bar {
+  display: flex;
+  flex-direction: column;
+  width: 36px;
+  flex-shrink: 0;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border);
+}
+
+.rb-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+  gap: 2px;
+}
+
+.rb-btn {
+  background: none;
+  border: none;
+  outline: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s, background 0.12s;
+
+  &:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+  }
+}
+
+.rb-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rb-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1.5px solid var(--bg-panel);
+}
+
 /* ── Work Area ── */
 .work-area {
   display: flex;
@@ -215,7 +270,7 @@
   min-width: 160px;
   max-width: 480px;
   overflow: hidden;
-  border-radius: 0 0 8px 8px;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .panel-header {
@@ -270,7 +325,7 @@
   flex: 1;
   overflow: hidden;
   min-width: 0;
-  border-radius: 0 0 8px 8px;
+  border-radius: 8px;
 }
 
 .editor-wrap {
@@ -292,5 +347,5 @@
   flex-shrink: 0;
   overflow: hidden;
   min-height: 80px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
 }

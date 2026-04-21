@@ -2,15 +2,15 @@
 
 .tab-bar {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   height: 38px;
-  background: var(--bg-panel);
+  background: var(--bg-editor);
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
   overflow-y: hidden;
   flex-shrink: 0;
   padding: 0 4px;
-  gap: 2px;
+  gap: 1px;
 
   &::-webkit-scrollbar { height: 2px; }
 }
@@ -19,41 +19,50 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 0 10px;
-  height: 32px;
-  min-width: 110px;
+  padding: 0 8px;
+  height: 28px;
+  min-width: 100px;
   max-width: 190px;
   cursor: pointer;
   font-size: 12px;
   color: var(--text-muted);
-  background: var(--bg-hover);
-  border-radius: 6px 6px 0 0;
+  background: transparent;
+  border-radius: 6px;
   transition: background 0.1s, color 0.1s;
   user-select: none;
-  position: relative;
   flex-shrink: 0;
 
   &:hover {
-    background: var(--bg-hover);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
   }
 
   &.active {
-    background: var(--tab-active-bg);
+    background: var(--bg-hover);
     color: var(--text-primary);
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--tab-indicator);
-    }
   }
 
-  .tab-icon { font-size: 12px; flex-shrink: 0; }
+  .tab-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+
+    .icon-md {
+      display: flex;
+      align-items: center;
+      gap: 1px;
+
+      .md-m {
+        font-size: 10px;
+        font-weight: 700;
+        color: #4e9de0;
+        line-height: 1;
+        font-family: var(--font-mono);
+      }
+    }
+
+    svg { display: block; }
+  }
 
   .tab-name {
     flex: 1;
@@ -67,8 +76,8 @@
     border: none;
     color: var(--text-muted);
     cursor: pointer;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: 3px;
     font-size: 15px;
     line-height: 1;
@@ -90,7 +99,4 @@
   &.active .tab-close { opacity: 1; }
 }
 
-.tab-spacer {
-  flex: 1;
-  background: transparent;
-}
+.tab-spacer { flex: 1; }

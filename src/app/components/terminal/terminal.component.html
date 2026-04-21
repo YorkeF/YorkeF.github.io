@@ -1,13 +1,36 @@
 <div class="terminal" (click)="focusInput()">
+
   <div class="term-header">
     <span class="term-label">Terminal</span>
-    <div class="term-tabs">
-      <span class="term-tab">bash</span>
-    </div>
+
+    @for (session of sessions(); track session.id) {
+      <div
+        class="term-tab"
+        [class.active]="session.id === activeId()"
+        (click)="setActive(session.id); $event.stopPropagation()"
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 3.5L5.5 6L2 8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6.5 9h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        {{ session.label }}
+        <button class="term-tab-close" (click)="closeSession(session.id); $event.stopPropagation()" title="Close">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2 2l6 6M8 2l-6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    }
+
+    <button class="term-add" (click)="addSession(); $event.stopPropagation()" title="New terminal">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
 
   <div class="term-body" #scrollArea>
-    @for (entry of entries(); track $index) {
+    @for (entry of activeSession().entries; track $index) {
       <div class="t-line t-{{ entry.type }}">{{ entry.text }}</div>
     }
     <div class="t-prompt-row">
@@ -16,7 +39,7 @@
         #cmdInput
         class="t-input"
         type="text"
-        [value]="currentInput()"
+        [value]="activeSession().currentInput"
         (input)="onInput($event)"
         (keydown)="onKeydown($event)"
         autocomplete="off"
@@ -24,4 +47,5 @@
       />
     </div>
   </div>
+
 </div>

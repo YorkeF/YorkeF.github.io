@@ -5,13 +5,13 @@
     "type": "folder",
     "children": [
       {
-        "name": "aws_certified_developer.md",
-        "path": "education/aws_certified_developer.md",
+        "name": "francis_tuttle_technology_center.md",
+        "path": "education/francis_tuttle_technology_center.md",
         "type": "file"
       },
       {
-        "name": "bachelors_computer_science.md",
-        "path": "education/bachelors_computer_science.md",
+        "name": "oklahoma_state_university.md",
+        "path": "education/oklahoma_state_university.md",
         "type": "file"
       }
     ]
@@ -22,13 +22,28 @@
     "type": "folder",
     "children": [
       {
-        "name": "junior_developer.md",
-        "path": "experience/junior_developer.md",
+        "name": "infratile_fullstack.md",
+        "path": "experience/infratile_fullstack.md",
         "type": "file"
       },
       {
-        "name": "senior_frontend_engineer.md",
-        "path": "experience/senior_frontend_engineer.md",
+        "name": "infratile_intern.md",
+        "path": "experience/infratile_intern.md",
+        "type": "file"
+      },
+      {
+        "name": "osu_helpdesk.md",
+        "path": "experience/osu_helpdesk.md",
+        "type": "file"
+      },
+      {
+        "name": "paycom_developer_iii.md",
+        "path": "experience/paycom_developer_iii.md",
+        "type": "file"
+      },
+      {
+        "name": "paycom_intern.md",
+        "path": "experience/paycom_intern.md",
         "type": "file"
       }
     ]
@@ -39,18 +54,23 @@
     "type": "folder",
     "children": [
       {
-        "name": "ecommerce_platform.md",
-        "path": "projects/ecommerce_platform.md",
+        "name": "lichen_leachies.md",
+        "path": "projects/lichen_leachies.md",
         "type": "file"
       },
       {
-        "name": "iot_dashboard.md",
-        "path": "projects/iot_dashboard.md",
+        "name": "linguistic_ml.md",
+        "path": "projects/linguistic_ml.md",
         "type": "file"
       },
       {
-        "name": "portfolio_ide.md",
-        "path": "projects/portfolio_ide.md",
+        "name": "machine_learning.md",
+        "path": "projects/machine_learning.md",
+        "type": "file"
+      },
+      {
+        "name": "senior_game.md",
+        "path": "projects/senior_game.md",
         "type": "file"
       }
     ]

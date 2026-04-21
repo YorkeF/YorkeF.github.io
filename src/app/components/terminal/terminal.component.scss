@@ -11,38 +11,89 @@
 .term-header {
   display: flex;
   align-items: center;
-  height: 30px;
-  background: var(--bg-panel);
+  height: 38px;
+  background: var(--terminal-bg);
   border-bottom: 1px solid var(--border);
-  padding: 0 12px;
-  gap: 12px;
+  padding: 0 4px;
+  gap: 1px;
   flex-shrink: 0;
 }
 
 .term-label {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   font-family: var(--font-ui);
   user-select: none;
-}
-
-.term-tabs {
-  display: flex;
-  gap: 4px;
+  padding: 0 8px;
 }
 
 .term-tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 10px;
   font-size: 12px;
   font-family: var(--font-ui);
-  color: var(--text-primary);
-  background: var(--bg-selected);
-  padding: 2px 10px;
-  border-radius: 3px;
+  color: var(--text-muted);
+  background: transparent;
+  border-radius: 6px;
   cursor: default;
   user-select: none;
+
+  &.active {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+
+  svg { flex-shrink: 0; }
+
+  .term-tab-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.1s, background 0.1s, color 0.1s;
+    padding: 0;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-primary);
+    }
+  }
+
+  &:hover .term-tab-close,
+  &.active .term-tab-close { opacity: 1; }
+}
+
+.term-add {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.1s, color 0.1s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+  }
 }
 
 .term-body {

@@ -9,22 +9,49 @@ Instead of a traditional portfolio, this site renders as a fully interactive Jet
 ## Layout
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│  Toolbar  [logo · hamburger · project · branch]   [run·debug·search] [×]│
-├────┬────────────────────────────────────────────────────────────────────┤
-│    │  TabBarComponent                                                    │
-│    ├──────────────────────────────────────┬──────────────────────────── │
-│ A  │                                      │                             │
-│ c  │  FileTreeComponent                   │  EditorPanelComponent       │
-│ t  │  (project panel)                     │  (line numbers + markdown)  │
-│ i  │                                      │                             │
-│ v  ├──────────────────────────────────────┴─────────────────────────────│
-│ i  │  TerminalComponent  (full width, fake bash)                        │
-│ t  │                                                                    │
-│ y  │                                                                    │
-├────┴────────────────────────────────────────────────────────────────────┤
-│  StatusBarComponent  [breadcrumb path]              [UTF-8 · LF · Ln 1] │
-└─────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Toolbar                                                                                                                │
+│  [YF logo] [≡ menu]  │  [YF · portfolio ▾]  [⎇ main ▾]    [active-file.md ▾]  │  [▶ run] [⬤ debug]   │[⌕] [⚙]│[─][□][×]│
+├────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────┬────────┤
+│        │  ┌─────────────── Project Panel ────────────────┐      ┌────────────── Editor Column ───────────────┐  │        │
+│        │  │ Panel Header                                 │      │ TabBarComponent                            │  │        │
+│  A     │  │  "PROJECT"                                   │      │ [M↓ about.md ×]  [{ manifest.json ×]  ...  │  │  R     │
+│  c     │  ├──────────────────────────────────────────────┤      ├──────────┬─────────────────────────────────┤  │  i     │
+│  t     │  │ FileTreeComponent                            │      │  Gutter  │ EditorPanelComponent            │  │  g     │
+│  i     │  │                                              │  ↔   │          │                                 │  │  h     │
+│  v     │  │  ▶ portfolio/                                │vhand │    1     │  # About Me                     │  │  t     │
+│  i     │  │     ├─ M↓ about.md                           │      │    2     │                                 │  │        │
+│  t     │  │     ▸ 📁 education/                          │      │    3     │  **Name:** Yorke Ferrell        │  │  B     │
+│  y     │  │        ├─ M↓ bachelors_computer_science.md   │      │    4     │  **Role:** Full-Stack Developer │  │  a     │
+│        │  │        └─ M↓ aws_certified_developer.md      │      │    5     │                                 │  │  r     │
+│  B     │  │     ▸ 📁 experience/                         │      │    6     │  ## Summary                     │  │        │
+│  a     │  │        ├─ M↓ senior_frontend_engineer.md     │      │    7     │                                 │  │  🔔    │
+│  r     │  │        └─ M↓ junior_developer.md             │      │  line    │  markdown content with          │  │        │
+│        │  │     ▸ 📁 projects/                           │      │  numbers │  syntax highlighting            │  │        │
+│        │  │        ├─ M↓ portfolio_ide.md                │      │ (gutter) │  applied per line               │  │  👥    │
+│        │  │        ├─ M↓ ecommerce_platform.md           │      │          │                                 │  │        │
+│        │  │        └─ M↓ iot_dashboard.md                │      │          │  images shown as                │  │  🗄     │
+│        │  │                                              │      │          │  <img> viewer                   │  │        │
+│        │  └──────────────────────────────────────────────┘      └──────────┴─────────────────────────────────┘  │        │
+│        │                                                                                                        │        │
+│        │  ↕  hhandle — drag border up/down to resize terminal height                                            │        │
+│        ├────────────────────────────────────────────────────────────────────────────────────────────────────────┤        │
+│        │  TerminalComponent                                                                                     │        │
+│        │  ┌── Terminal Tab Bar ─────────────────────────────────────────────────────────────────────────────┐   │        │
+│        │  │  Terminal (label)  │  [▶ Local ×]  [▶ Local (2) ×]  [▶ Local (3) ×]  [+]                        │   │        │
+│        │  ├─────────────────────────────────────────────────────────────────────────────────────────────────┤   │        │
+│        │  │  Portfolio Terminal — type 'help' for available commands                                        │   │        │
+│        │  │                                                                                                 │   │        │
+│        │  │  yorke@portfolio:~/portfolio$ ls                                                                │   │        │
+│        │  │  about.md   education/   experience/   projects/                                                │   │        │
+│        │  │  yorke@portfolio:~/portfolio$ cd education                                                      │   │        │
+│        │  │  yorke@portfolio:~/portfolio/education$ cat bachelors_computer_science.md                       │   │        │
+│        │  │  yorke@portfolio:~/portfolio/education$ _                                                       │   │        │
+│        │  └─────────────────────────────────────────────────────────────────────────────────────────────────┘   │        │
+├────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────┤
+│  StatusBarComponent                                                                                                      │
+│  [⎇ git icon  ›  portfolio  ›  education  ›  bachelors_computer_science.md]    [Markdown]  [UTF-8]  [LF]  [Ln 1, Col 1] │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 The project panel and terminal can each be toggled via the activity bar icons on the left. The divider between the project panel and editor, and the divider above the terminal, are both draggable to resize.

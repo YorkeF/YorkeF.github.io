@@ -1,31 +1,32 @@
-# About Me
+# Yorke Ferrell
+## Full-Stack Software Developer
 
-**Name:** Yorke Ferrell
-**Role:** Full-Stack Developer
-**Location:** Oklahoma City, United States
+**Email:** yorke.ferrell@gmail.com
+**Phone:** 1.405.820.7242
+**GitHub:** github.com/YorkeF
+**Location:** Oklahoma City, OK
 
 ---
 
 ## Summary
 
-A passionate developer with a strong eye for design and a love for building
-tools that feel great to use. I specialise in modern web technologies and
-enjoy crafting experiences that are both functional and memorable.
+Full-stack developer with experience across the entire web stack — from
+performant MySQL queries on million-record databases to interactive
+GIS frontends and internal developer tooling. I've shipped production
+features at Paycom and InfraTie, led small teams, and built personal
+projects ranging from e-commerce to machine learning.
 
-This site is a good example — a portfolio disguised as a JetBrains IDE,
-because boring portfolios are for boring developers.
+This site is itself a project — a portfolio disguised as a JetBrains IDE.
 
-## Interests
+---
 
-- Building developer tooling and productivity apps
-- Creative coding and generative art
-- Open source contributions
-- Mechanical keyboards (obviously)
+## Skills
 
-## Contact
+**Programming Languages:**
+`Python` `PHP` `TypeScript` `JavaScript` `HTML/CSS` `MySQL` `Java` `Bash`
 
-- **Email:** yorke.ferrell@gmail.com
-- **GitHub:** github.com/YorkeF
-- **LinkedIn:** linkedin.com/in/yorkeforde
+**Frameworks & Technologies:**
+`Django` `Next.js` `React` `GraphQL` `.NET Core` `AWS` `Docker`
+`Leaflet.js` `Apache` `Git` `Jira` `Regex`
 
-<!-- Welcome! Try the terminal at the bottom — type 'help' to get started. -->
+<!-- Navigate the file tree on the left to explore my work, or type 'help' in the terminal below. -->

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { IdeService } from '../../services/ide.service';
+import { IdeService, IMAGE_EXTS } from '../../services/ide.service';
 
 @Component({
   selector: 'app-tab-bar',
@@ -23,4 +23,8 @@ export class TabBarComponent {
     event.stopPropagation();
     this.ide.closeTab(path);
   }
+
+  isMd(name: string):    boolean { return name.endsWith('.md'); }
+  isImage(name: string): boolean { return IMAGE_EXTS.test(name); }
+  isJson(name: string):  boolean { return name.endsWith('.json'); }
 }

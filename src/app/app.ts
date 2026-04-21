@@ -1,4 +1,4 @@
-import { Component, inject, signal, HostListener } from '@angular/core';
+import { Component, inject, signal, HostListener, ViewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { IdeService } from './services/ide.service';
@@ -18,6 +18,8 @@ import { StatusBarComponent } from './components/status-bar/status-bar.component
 export class App {
   private ide = inject(IdeService);
 
+  @ViewChild(TerminalComponent) private terminal!: TerminalComponent;
+
   readonly activeFileName = toSignal(
     this.ide.activeTabPath$.pipe(map(p => p?.split('/').pop() ?? null)),
     { initialValue: null as string | null }
@@ -28,8 +30,13 @@ export class App {
   showProject    = signal(true);
   showTerminal   = signal(true);
 
-  toggleProject(): void  { this.showProject.update(v => !v); }
-  toggleTerminal(): void { this.showTerminal.update(v => !v); }
+  toggleProject(): void { this.showProject.update(v => !v); }
+
+  toggleTerminal(): void {
+    const opening = !this.showTerminal();
+    this.showTerminal.set(opening);
+    if (opening) this.terminal?.ensureSession();
+  }
 
   closeWindow(): void {
     window.close();
