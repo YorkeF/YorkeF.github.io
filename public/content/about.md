@@ -16,8 +16,6 @@ GIS frontends and internal developer tooling. I've shipped production
 features at Paycom and InfraTie, led small teams, and built personal
 projects ranging from e-commerce to machine learning.
 
-This site is itself a project — a portfolio disguised as a JetBrains IDE.
-
 ---
 
 ## Skills
